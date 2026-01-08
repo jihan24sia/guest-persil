@@ -35,11 +35,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('user.index') }}" class="{{ request()->routeIs('user.*') ? 'active' : '' }}">
-                        User
-                    </a>
-                </li>
 
                 <li>
                     <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">
@@ -55,6 +50,12 @@
 
                 {{-- ================= MENU KHUSUS LOGIN ================= --}}
                 @auth
+                    <li>
+                        <a href="{{ route('user.index') }}" class="{{ request()->routeIs('user.*') ? 'active' : '' }}">
+                            User
+                        </a>
+                    </li>
+
                     <li>
                         <a href="{{ route('warga.index') }}" class="{{ request()->routeIs('warga.*') ? 'active' : '' }}">
                             Warga

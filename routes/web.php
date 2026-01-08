@@ -25,7 +25,7 @@ Route::get('/servis', [ServiceController::class, 'index'])->name('servis');
 Route::get('/dokumentasi', [DokumentasiController::class, 'index'])->name('dokumentasi');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/developer', [DeveloperController::class, 'index'])->name('developer');
-Route::resource('user', UserController::class);
+
 
 // =========================
 // Custom Route: Delete Media
@@ -68,4 +68,5 @@ Route::middleware(['auth', 'role:admin,super_admin'])->group(function () {
     Route::resource('peta', PetaController::class);
     Route::resource('sengketa', SengketaController::class);
     Route::resource('jenis', JenisPenggunaanController::class);
+Route::resource('user', UserController::class);
 });

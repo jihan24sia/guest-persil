@@ -46,20 +46,11 @@ class WargaController extends Controller
         ]);
 
         Warga::create($validated);
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil disimpan!');
+        return redirect()->route('warga.index')->with('success',
+        'Data warga berhasil disimpan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $data['warga'] = Warga::findOrFail($id);
@@ -74,7 +65,8 @@ class WargaController extends Controller
     {
           $warga = Warga::findOrFail($id);
         $validated = $request->validate([
-            'no_ktp' => 'required|unique:warga,no_ktp,' . $id . ',warga_id',
+            'no_ktp' => 'required|unique:warga,no_ktp,' . $id .
+            ',warga_id',
             'nama' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
@@ -85,7 +77,8 @@ class WargaController extends Controller
 
 
         $warga->update($validated);
-        return redirect()->route('warga.index')->with('success', 'Data warga berhasil diperbarui!');
+        return redirect()->route('warga.index')->with('success',
+        'Data warga berhasil diperbarui!');
     }
 
     /**
@@ -95,6 +88,7 @@ class WargaController extends Controller
     {
 
         Warga::findOrFail($id)->delete();
-        return redirect()->route('warga.index')->with('success', 'Data warga dihapus!');
+        return redirect()->route('warga.index')->with('success',
+        'Data warga dihapus!');
     }
 }

@@ -61,7 +61,8 @@ class PersilController extends Controller
         if ($request->hasFile('media_files')) {
             foreach ($request->file('media_files') as $i => $file) {
 
-                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' .
+                $file->getClientOriginalExtension();
                 $file->storeAs('uploads/persil', $filename, 'public');
 
                 Media::create([
@@ -89,7 +90,8 @@ class PersilController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_persil'      => 'required|unique:persil,kode_persil,' . $id . ',persil_id',
+            'kode_persil'      => 'required|unique:persil,kode_persil,' .
+            $id . ',persil_id',
             'pemilik_warga_id' => 'required',
             'luas_m2'          => 'required|numeric',
             'penggunaan'       => 'required',
@@ -121,7 +123,8 @@ class PersilController extends Controller
 
             foreach ($request->file('media_files') as $i => $file) {
 
-                $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' .
+                $file->getClientOriginalExtension();
                 $file->storeAs('uploads/persil', $filename, 'public');
 
                 Media::create([

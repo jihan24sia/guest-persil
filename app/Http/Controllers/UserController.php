@@ -48,20 +48,11 @@ class UserController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return redirect()->route('user.index')->with('success', 'User berhasil ditambahkan.');
+        return redirect()->route('user.index')->with('success', 'User berhasil
+        ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $data['dataUser'] = User::findOrFail($id);
@@ -83,7 +74,7 @@ class UserController extends Controller
                 Rule::unique('users', 'email')->ignore($user->id),
             ],
             'role' => ['required'],
-            'password' => ['nullable', 'min:8'], // ❗ confirmed DIHAPUS (opsional)
+            'password' => ['nullable', 'min:8'],
         ]);
 
         $user->name = $validated['name'];
@@ -109,6 +100,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
-        return redirect()->route('user.index')->with('succes', 'data berhasil dihapus');
+        return redirect()->route('user.index')->with('succes',
+        'data berhasil dihapus');
     }
 }
